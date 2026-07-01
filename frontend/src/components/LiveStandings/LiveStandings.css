@@ -1,0 +1,21 @@
+.live-standings {
+    background: #161B22;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.live-standings table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.live-standings th,
+.live-standings td {
+    padding: 10px;
+    text-align: left;
+}
+
+.live-standings th {
+    color: #B0B8C1;
+}

@@ -16,12 +16,6 @@ function CurrentRacePanel() {
 
   return (
     <section className="race-panel">
-
-      <div className="race-header">
-        <h2>{raceData.grandPrix}</h2>
-        <p>{raceData.circuit} | {raceData.session}</p>
-      </div>
-
       <div className="race-stats">
 
         <div className="stat">
