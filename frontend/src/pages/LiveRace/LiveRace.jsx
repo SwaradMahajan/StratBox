@@ -1,5 +1,7 @@
+import Dashboard from "../../components/Dashboard/Dashboard";
+
 function LiveRace() {
-    return <h1>Live Race Page</h1>;
+  return <Dashboard />;
 }
 
 export default LiveRace;

@@ -1,0 +1,57 @@
+.race-panel {
+    margin: 25px;
+    padding: 25px;
+
+    background-color: #161B22;
+
+    border-radius: 12px;
+}
+
+.race-header h2 {
+    margin-bottom: 5px;
+}
+
+.race-header p {
+    color: #B0B8C1;
+}
+
+.race-stats {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin: 30px 0;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat h4 {
+    color: #B0B8C1;
+    margin-bottom: 8px;
+}
+
+.stat p {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.fastest-lap {
+    border-top: 1px solid #30363D;
+
+    padding-top: 20px;
+}
+
+.fastest-lap h4 {
+    color: #B0B8C1;
+}
+
+.fastest-lap p {
+    font-size: 22px;
+    margin-top: 10px;
+}
+
+.fastest-lap span {
+    color: #E10600;
+}
