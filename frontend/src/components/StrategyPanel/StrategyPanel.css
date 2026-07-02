@@ -1,0 +1,102 @@
+.strategy-panel {
+    background-color: #161b22;
+    border-radius: 12px;
+    padding: 25px;
+    margin-top: 30px;
+    color: white;
+}
+
+.strategy-panel h2 {
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.strategy-panel h3 {
+    margin-bottom: 25px;
+    color: #e10600;
+}
+
+.strategy-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.strategy-box {
+    flex: 1;
+    min-width: 180px;
+    background-color: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 18px;
+    text-align: center;
+}
+
+.strategy-box h4 {
+    margin: 0;
+    margin-bottom: 12px;
+    color: #b0b8c1;
+    font-size: 1rem;
+}
+
+.strategy-box p {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.recommendations {
+    margin-top: 20px;
+}
+
+.recommendations h3 {
+    margin-bottom: 15px;
+}
+
+.recommendation-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.recommendation-card {
+    flex: 1;
+    min-width: 220px;
+    background-color: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.recommendation-card h4 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: #e10600;
+}
+
+.recommendation-card p {
+    margin: 8px 0;
+    color: #d0d7de;
+}
+
+.position-card {
+    margin-top: 30px;
+    background-color: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.position-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.position-card p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #00d26a;
+}

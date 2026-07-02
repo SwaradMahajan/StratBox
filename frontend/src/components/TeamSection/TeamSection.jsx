@@ -4,6 +4,7 @@ import "./TeamSection.css";
 
 import TeamSelector from "../TeamSelector/TeamSelector";
 import DriverSelector from "../DriverSelector/DriverSelector";
+import StrategyPanel from "../StrategyPanel/StrategyPanel";
 
 function TeamSection() {
   const [selectedTeam, setSelectedTeam] = useState(null);
@@ -25,6 +26,10 @@ function TeamSection() {
         selectedTeam={selectedTeam}
         selectedDriver={selectedDriver}
         setSelectedDriver={setSelectedDriver}
+      />
+
+      <StrategyPanel
+        selectedDriver={selectedDriver}
       />
     </div>
   );

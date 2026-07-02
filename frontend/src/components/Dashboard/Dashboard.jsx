@@ -8,15 +8,11 @@ import StrategyPanel from "../StrategyPanel/StrategyPanel";
 function Dashboard() {
   return (
     <section className="dashboard">
-
       <DashboardHeader />
 
       <TopSection />
 
       <TeamSection />
-
-      <StrategyPanel />
-
     </section>
   );
 }

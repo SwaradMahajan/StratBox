@@ -1,4 +1,5 @@
 import { TEAM_IDS } from "../constants/teamIds";
+import DRIVER_IMAGES from "../assets/driverImages";
 
 const drivers = [
   // McLaren
@@ -11,7 +12,7 @@ const drivers = [
     number: 4,
     countryCode: "GB",
     teamId: TEAM_IDS.MCLAREN,
-    photo: "norris.png",
+    photo: DRIVER_IMAGES.norris,
   },
   {
     id: 2,
@@ -22,7 +23,7 @@ const drivers = [
     number: 81,
     countryCode: "AU",
     teamId: TEAM_IDS.MCLAREN,
-    photo: "piastri.png",
+    photo: DRIVER_IMAGES.piastri,
   },
 
   // Ferrari
@@ -35,7 +36,7 @@ const drivers = [
     number: 16,
     countryCode: "MC",
     teamId: TEAM_IDS.FERRARI,
-    photo: "leclerc.png",
+    photo: DRIVER_IMAGES.leclerc,
   },
   {
     id: 4,
@@ -46,7 +47,7 @@ const drivers = [
     number: 44,
     countryCode: "GB",
     teamId: TEAM_IDS.FERRARI,
-    photo: "hamilton.png",
+    photo: DRIVER_IMAGES.hamilton,
   },
 
   // Red Bull
@@ -59,7 +60,7 @@ const drivers = [
     number: 1,
     countryCode: "NL",
     teamId: TEAM_IDS.RED_BULL,
-    photo: "verstappen.png",
+    photo: DRIVER_IMAGES.verstappen,
   },
   {
     id: 6,
@@ -70,7 +71,7 @@ const drivers = [
     number: 6,
     countryCode: "FR",
     teamId: TEAM_IDS.RED_BULL,
-    photo: "hadjar.png",
+    photo: DRIVER_IMAGES.hadjar,
   },
 
   // Mercedes
@@ -83,7 +84,7 @@ const drivers = [
     number: 63,
     countryCode: "GB",
     teamId: TEAM_IDS.MERCEDES,
-    photo: "russell.png",
+    photo: DRIVER_IMAGES.russell,
   },
   {
     id: 8,
@@ -94,7 +95,7 @@ const drivers = [
     number: 12,
     countryCode: "IT",
     teamId: TEAM_IDS.MERCEDES,
-    photo: "antonelli.png",
+    photo: DRIVER_IMAGES.antonelli,
   },
 
   // Aston Martin
@@ -107,7 +108,7 @@ const drivers = [
     number: 14,
     countryCode: "ES",
     teamId: TEAM_IDS.ASTON_MARTIN,
-    photo: "alonso.png",
+    photo: DRIVER_IMAGES.alonso,
   },
   {
     id: 10,
@@ -118,7 +119,7 @@ const drivers = [
     number: 18,
     countryCode: "CA",
     teamId: TEAM_IDS.ASTON_MARTIN,
-    photo: "stroll.png",
+    photo: DRIVER_IMAGES.stroll,
   },
 
   // Alpine
@@ -131,7 +132,7 @@ const drivers = [
     number: 10,
     countryCode: "FR",
     teamId: TEAM_IDS.ALPINE,
-    photo: "gasly.png",
+    photo: DRIVER_IMAGES.gasly,
   },
   {
     id: 12,
@@ -142,7 +143,7 @@ const drivers = [
     number: 43,
     countryCode: "AR",
     teamId: TEAM_IDS.ALPINE,
-    photo: "colapinto.png",
+    photo: DRIVER_IMAGES.colapinto,
   },
 
   // Haas
@@ -155,7 +156,7 @@ const drivers = [
     number: 31,
     countryCode: "FR",
     teamId: TEAM_IDS.HAAS,
-    photo: "ocon.png",
+    photo: DRIVER_IMAGES.ocon,
   },
   {
     id: 14,
@@ -166,7 +167,7 @@ const drivers = [
     number: 87,
     countryCode: "GB",
     teamId: TEAM_IDS.HAAS,
-    photo: "bearman.png",
+    photo: DRIVER_IMAGES.bearman,
   },
 
   // Williams
@@ -179,7 +180,7 @@ const drivers = [
     number: 23,
     countryCode: "TH",
     teamId: TEAM_IDS.WILLIAMS,
-    photo: "albon.png",
+    photo: DRIVER_IMAGES.albon,
   },
   {
     id: 16,
@@ -190,7 +191,7 @@ const drivers = [
     number: 55,
     countryCode: "ES",
     teamId: TEAM_IDS.WILLIAMS,
-    photo: "sainz.png",
+    photo: DRIVER_IMAGES.sainz,
   },
 
   // Racing Bulls
@@ -203,7 +204,7 @@ const drivers = [
     number: 30,
     countryCode: "NZ",
     teamId: TEAM_IDS.RACING_BULLS,
-    photo: "lawson.png",
+    photo: DRIVER_IMAGES.lawson,
   },
   {
     id: 18,
@@ -214,7 +215,7 @@ const drivers = [
     number: 37,
     countryCode: "GB",
     teamId: TEAM_IDS.RACING_BULLS,
-    photo: "lindblad.png",
+    photo: DRIVER_IMAGES.lindblad,
   },
 
   // Audi
@@ -227,7 +228,7 @@ const drivers = [
     number: 27,
     countryCode: "DE",
     teamId: TEAM_IDS.AUDI,
-    photo: "hulkenberg.png",
+    photo: DRIVER_IMAGES.hulkenberg,
   },
   {
     id: 20,
@@ -238,7 +239,7 @@ const drivers = [
     number: 5,
     countryCode: "BR",
     teamId: TEAM_IDS.AUDI,
-    photo: "bortoleto.png",
+    photo: DRIVER_IMAGES.bortoleto,
   },
 
   // Cadillac
@@ -251,7 +252,7 @@ const drivers = [
     number: 11,
     countryCode: "MX",
     teamId: TEAM_IDS.CADILLAC,
-    photo: "perez.png",
+    photo: DRIVER_IMAGES.perez,
   },
   {
     id: 22,
@@ -262,7 +263,7 @@ const drivers = [
     number: 77,
     countryCode: "FI",
     teamId: TEAM_IDS.CADILLAC,
-    photo: "bottas.png",
+    photo: DRIVER_IMAGES.bottas,
   },
 ];
 

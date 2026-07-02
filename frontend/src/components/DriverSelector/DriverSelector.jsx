@@ -22,12 +22,21 @@ function DriverSelector({
             <div
               key={driver.id}
               className={`driver-card ${
-                selectedDriver === driver.id ? "active" : ""
+                selectedDriver?.id === driver.id ? "active" : ""
               }`}
-              onClick={() => setSelectedDriver(driver.id)}
+              onClick={() => setSelectedDriver(driver)}
             >
+              <img
+                src={driver.photo}
+                alt={driver.fullName}
+                className="driver-photo"
+              />
+
               <h3>{driver.fullName}</h3>
-              <p>{driver.code}</p>
+
+              <p>
+                {driver.countryCode} • #{driver.number}
+              </p>
             </div>
           ))}
         </div>
