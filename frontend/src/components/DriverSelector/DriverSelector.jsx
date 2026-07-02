@@ -2,6 +2,7 @@ import "./DriverSelector.css";
 import drivers from "../../data/drivers";
 import FLAG_IMAGES from "../../assets/flagImages";
 import countries from "../../data/countries";
+import teams from "../../data/teams";
 
 function DriverSelector({
   selectedTeam,
@@ -21,38 +22,56 @@ function DriverSelector({
       ) : (
         <div className="driver-grid">
           {filteredDrivers.map((driver) => {
-            const flag = FLAG_IMAGES[driver.countryCode];
-            const country = countries[driver.countryCode];
+                const team = teams.find(
+                    (t) => t.id === driver.teamId
+                );
 
+                const flag = FLAG_IMAGES[driver.countryCode];
+
+                const countryName = countries[driver.countryCode];
             return (
                 <div
-                key={driver.id}
-                className={`driver-card ${
-                    selectedDriver?.id === driver.id ? "active" : ""
-                }`}
-                onClick={() => setSelectedDriver(driver)}
+                    key={driver.id}
+                    className={`driver-card ${
+                        selectedDriver?.id === driver.id ? "active" : ""
+                    }`}
+                    style={{
+                        borderColor:
+                            selectedDriver?.id === driver.id
+                                ? team.color
+                                : "#30363d",
+                    }}
+                    onClick={() => setSelectedDriver(driver)}
                 >
-                <img
-                    src={driver.photo}
-                    alt={driver.fullName}
-                    className="driver-photo"
-                />
 
-                <h3>{driver.fullName}</h3>
-
-                <div className="driver-meta">
-                    <img
-                    src={flag}
-                    alt={country}
-                    className="flag-icon"
+                    <div
+                        className="driver-accent"
+                        style={{ backgroundColor: team.color }}
                     />
 
-                    <span>{country}</span>
-                </div>
+                    <img
+                        src={driver.photo}
+                        alt={driver.fullName}
+                        className="driver-photo"
+                    />
 
-                <p className="driver-number">
-                    #{driver.number}
-                </p>
+                    <h3>{driver.fullName}</h3>
+
+                    <div className="driver-country">
+
+                        <img
+                            src={flag}
+                            alt={countryName}
+                            className="flag-icon"
+                        />
+
+                        <span>{countryName}</span>
+
+                    </div>
+
+                    <p className="driver-number">
+                        #{driver.number}
+                    </p>
 
                 </div>
             );

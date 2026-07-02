@@ -1,38 +1,43 @@
 const standings = [
   {
     position: 1,
-    driver: "NOR",
-    team: "McLaren",
+    driverId: 1, // Lando Norris
     tyre: "M",
     gap: "--",
+    lastLap: "1:29.103",
+    drs: false,
   },
   {
     position: 2,
-    driver: "VER",
-    team: "Red Bull",
+    driverId: 5, // Max Verstappen
     tyre: "H",
     gap: "+2.1",
+    lastLap: "1:29.248",
+    drs: true,
   },
   {
     position: 3,
-    driver: "LEC",
-    team: "Ferrari",
+    driverId: 3, // Charles Leclerc
     tyre: "M",
     gap: "+4.6",
+    lastLap: "1:29.382",
+    drs: true,
   },
   {
     position: 4,
-    driver: "HAM",
-    team: "Mercedes",
+    driverId: 4, // Lewis Hamilton
     tyre: "H",
     gap: "+6.8",
+    lastLap: "1:29.491",
+    drs: true,
   },
   {
     position: 5,
-    driver: "RUS",
-    team: "Mercedes",
+    driverId: 7, // George Russell
     tyre: "M",
     gap: "+8.4",
+    lastLap: "1:29.618",
+    drs: false,
   },
 ];
 

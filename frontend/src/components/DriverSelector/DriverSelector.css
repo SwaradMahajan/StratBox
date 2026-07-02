@@ -1,63 +1,95 @@
+.driver-selector {
+    margin-top: 35px;
+}
+
 .driver-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 25px;
+
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+
+    gap: 22px;
 }
 
 .driver-card {
-    background: #161b22;
-    border: 2px solid transparent;
-    border-radius: 14px;
-    padding: 20px;
+    position: relative;
+
+    background: #1b1f27;
+
+    border: 2px solid #30363d;
+
+    border-radius: 16px;
+
+    padding: 28px 20px;
+
+    overflow: hidden;
+
     text-align: center;
+
     cursor: pointer;
-    transition: .25s;
+
+    transition: all 0.25s ease;
 }
 
 .driver-card:hover {
-    transform: translateY(-4px);
-    border-color: #e10600;
+    transform: translateY(-6px);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .35);
 }
 
 .driver-card.active {
-    border-color: #e10600;
+    transform: translateY(-4px);
+}
+
+.driver-accent {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 0;
+
+    height: 6px;
 }
 
 .driver-photo {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+
+    height: 120px;
+
     object-fit: contain;
-    margin-bottom: 15px;
+
+    margin-bottom: 18px;
 }
 
 .driver-card h3 {
     color: white;
-    margin-bottom: 10px;
+
+    margin-bottom: 15px;
 }
 
-.driver-card p {
-    color: #c0c7d0;
-}
-.driver-meta {
+.driver-country {
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     gap: 8px;
-    margin-top: 10px;
-    color: #c9d1d9;
-    font-size: 0.95rem;
+
+    color: #c7ced8;
+
+    margin-bottom: 14px;
 }
 
 .flag-icon {
-    width: 26px;
-    height: 18px;
-    object-fit: cover;
-    border-radius: 2px;
+    width: 24px;
+
+    border-radius: 3px;
 }
 
 .driver-number {
-    margin-top: 8px;
-    font-size: 1.05rem;
-    font-weight: 700;
+    font-size: 1.3rem;
+
+    font-weight: bold;
+
     color: white;
 }

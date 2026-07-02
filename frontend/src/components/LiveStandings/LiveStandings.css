@@ -1,21 +1,30 @@
 .live-standings {
-    background: #161B22;
-    border-radius: 12px;
+    background-color: #1b1f27;
+    border-radius: 16px;
     padding: 20px;
+    color: white;
+}
+
+.live-standings h2 {
+    margin-bottom: 20px;
 }
 
 .live-standings table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.live-standings th,
-.live-standings td {
-    padding: 10px;
-    text-align: left;
 }
 
 .live-standings th {
-    color: #B0B8C1;
+    color: #b5bcc8;
+    text-align: left;
+    padding-bottom: 12px;
+}
+
+.live-standings td {
+    padding: 10px 0;
+    border-bottom: 1px solid #2b313d;
+}
+
+.live-standings tr:last-child td {
+    border-bottom: none;
 }

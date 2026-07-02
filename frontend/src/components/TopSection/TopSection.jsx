@@ -1,14 +1,26 @@
 import "./TopSection.css";
 
-import CurrentRacePanel from "../CurrentRacePanel/CurrentRacePanel";
+import raceData from "../../data/raceData";
+import InfoCard from "../InfoCard/InfoCard";
 import LiveStandings from "../LiveStandings/LiveStandings";
 
 function TopSection() {
   return (
-    <div className="top-section">
-      <CurrentRacePanel />
+    <section className="top-section">
+
+      <div className="race-info">
+
+        <h1>{raceData.grandPrix}</h1>
+
+        <p>{raceData.circuit}</p>
+
+        <InfoCard />
+
+      </div>
+
       <LiveStandings />
-    </div>
+
+    </section>
   );
 }
 

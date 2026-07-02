@@ -1,14 +1,13 @@
 import "./Dashboard.css";
 
-import DashboardHeader from "../DashboardHeader/DashboardHeader";
+import Navbar from "../Navbar/Navbar";
 import TopSection from "../TopSection/TopSection";
 import TeamSection from "../TeamSection/TeamSection";
-import StrategyPanel from "../StrategyPanel/StrategyPanel";
 
 function Dashboard() {
   return (
     <section className="dashboard">
-      <DashboardHeader />
+      <Navbar />
 
       <TopSection />
 
