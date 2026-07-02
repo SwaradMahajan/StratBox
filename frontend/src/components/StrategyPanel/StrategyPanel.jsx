@@ -1,12 +1,24 @@
 import "./StrategyPanel.css";
 import strategyData from "../../data/strategyData";
 
-function StrategyPanel({ selectedDriver }) {
-  const strategy = selectedDriver
-    ? strategyData[selectedDriver.id]
-    : null;
+function tyreBadge(tyre) {
+  switch (tyre) {
+    case "Soft":
+      return <span className="tyre soft">SOFT</span>;
 
-  if (!selectedDriver || !strategy) {
+    case "Medium":
+      return <span className="tyre medium">MEDIUM</span>;
+
+    case "Hard":
+      return <span className="tyre hard">HARD</span>;
+
+    default:
+      return <span>{tyre}</span>;
+  }
+}
+
+function StrategyPanel({ selectedDriver }) {
+  if (!selectedDriver) {
     return (
       <div className="strategy-panel">
         <h2>Tyre Strategy</h2>
@@ -15,86 +27,89 @@ function StrategyPanel({ selectedDriver }) {
     );
   }
 
+  const strategy = strategyData[selectedDriver.id];
+
+  if (!strategy) {
+    return (
+      <div className="strategy-panel">
+        <h2>Tyre Strategy</h2>
+        <p>No strategy data available.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="strategy-panel">
+
       <h2>Tyre Strategy</h2>
 
       <h3>{selectedDriver.fullName}</h3>
 
-      <div className="strategy-grid">
+      {/* Current Tyre */}
 
-        <div className="strategy-box">
-          <h4>Current Tyre</h4>
-          <p>{strategy.currentTyre}</p>
-        </div>
+      <div className="current-tyre">
 
-        <div className="strategy-box">
-          <h4>Tyre Age</h4>
-          <p>{strategy.tyreAge} Laps</p>
-        </div>
+        <h4>Current Compound</h4>
 
-        <div className="strategy-box">
-          <h4>Predicted Pit Window</h4>
-          <p>
-            Lap {strategy.pitWindow.start}-{strategy.pitWindow.end}
-          </p>
-        </div>
+        {tyreBadge(strategy.currentTyre)}
+
+        <p>Age: {strategy.tyreAge} laps</p>
 
       </div>
 
-      <h3 className="strategy-title">
-        Recommended Strategies
-      </h3>
+      {/* Strategy Cards */}
 
-      <div className="recommendation-grid">
+      <div className="strategy-cards">
 
-        <div className="recommendation-card">
-          <h4>One Stop</h4>
+        <div className="strategy-card recommended">
 
-          <p>
-            <strong>Current:</strong> {strategy.currentTyre}
-          </p>
+          <h4>⭐ Recommended</h4>
 
-          <p>
-            <strong>Pit:</strong> Lap{" "}
-            {strategy.recommendedStrategies.oneStop.pitLap}
-          </p>
+          <h3>One Stop</h3>
+
+          <p><strong>Pit Lap:</strong> {strategy.oneStop.pitLap}</p>
 
           <p>
             <strong>Next Tyre:</strong>{" "}
-            {strategy.recommendedStrategies.oneStop.nextTyre}
+            {tyreBadge(strategy.oneStop.nextTyre)}
           </p>
+
+          <p><strong>Finish:</strong> {strategy.oneStop.finish}</p>
+
         </div>
 
-        <div className="recommendation-card">
-          <h4>Two Stop</h4>
+        <div className="strategy-card">
+
+          <h4>Alternative</h4>
+
+          <h3>Two Stop</h3>
 
           <p>
-            <strong>Current:</strong> {strategy.currentTyre}
+            <strong>Pit 1:</strong> Lap {strategy.twoStop.firstPit}
           </p>
 
           <p>
-            <strong>Pit 1:</strong> Lap{" "}
-            {strategy.recommendedStrategies.twoStop[0].pitLap}
-            {" → "}
-            {strategy.recommendedStrategies.twoStop[0].nextTyre}
+            <strong>Tyre:</strong>{" "}
+            {tyreBadge(strategy.twoStop.firstTyre)}
+          </p>
+
+          <hr />
+
+          <p>
+            <strong>Pit 2:</strong> Lap {strategy.twoStop.secondPit}
           </p>
 
           <p>
-            <strong>Pit 2:</strong> Lap{" "}
-            {strategy.recommendedStrategies.twoStop[1].pitLap}
-            {" → "}
-            {strategy.recommendedStrategies.twoStop[1].nextTyre}
+            <strong>Tyre:</strong>{" "}
+            {tyreBadge(strategy.twoStop.secondTyre)}
           </p>
+
+          <p><strong>Finish:</strong> {strategy.twoStop.finish}</p>
+
         </div>
 
       </div>
 
-      <div className="prediction-box">
-        <h3>Estimated Finish Position</h3>
-
-        <h1>P{strategy.predictedFinish}</h1>
-      </div>
     </div>
   );
 }

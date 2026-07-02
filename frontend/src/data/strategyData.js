@@ -3,60 +3,42 @@ const strategyData = {
     currentTyre: "Medium",
     tyreAge: 16,
 
-    pitWindow: {
-      start: 31,
-      end: 35,
+    oneStop: {
+      pitLap: 33,
+      nextTyre: "Hard",
+      finish: "P2",
     },
 
-    recommendedStrategies: {
-      oneStop: {
-        pitLap: 33,
-        nextTyre: "Hard",
-      },
+    twoStop: {
+      firstPit: 24,
+      firstTyre: "Medium",
 
-      twoStop: [
-        {
-          pitLap: 24,
-          nextTyre: "Medium",
-        },
-        {
-          pitLap: 43,
-          nextTyre: "Soft",
-        },
-      ],
+      secondPit: 43,
+      secondTyre: "Soft",
+
+      finish: "P3",
     },
-
-    predictedFinish: 1,
   },
 
   2: {
     currentTyre: "Hard",
-    tyreAge: 8,
+    tyreAge: 24,
 
-    pitWindow: {
-      start: 39,
-      end: 44,
+    oneStop: {
+      pitLap: 39,
+      nextTyre: "Medium",
+      finish: "P1",
     },
 
-    recommendedStrategies: {
-      oneStop: {
-        pitLap: 41,
-        nextTyre: "Medium",
-      },
+    twoStop: {
+      firstPit: 27,
+      firstTyre: "Medium",
 
-      twoStop: [
-        {
-          pitLap: 28,
-          nextTyre: "Medium",
-        },
-        {
-          pitLap: 47,
-          nextTyre: "Soft",
-        },
-      ],
+      secondPit: 46,
+      secondTyre: "Soft",
+
+      finish: "P2",
     },
-
-    predictedFinish: 2,
   },
 };
 
