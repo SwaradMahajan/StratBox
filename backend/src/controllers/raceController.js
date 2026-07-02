@@ -1,5 +1,7 @@
-import raceData from "../data/raceData.js";
+import { getRaceData } from "../services/raceService.js";
 
-export const getRaceData = (req, res) => {
-    res.json(raceData);
+export const getRace = (req, res) => {
+    const race = getRaceData();
+
+    res.json(race);
 };

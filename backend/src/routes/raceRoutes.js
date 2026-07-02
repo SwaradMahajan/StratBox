@@ -1,8 +1,8 @@
 import express from "express";
-import { getRaceData } from "../controllers/raceController.js";
+import { getRace } from "../controllers/raceController.js";
 
 const router = express.Router();
 
-router.get("/", getRaceData);
+router.get("/", getRace);
 
 export default router;

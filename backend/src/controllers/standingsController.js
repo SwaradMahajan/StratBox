@@ -1,5 +1,7 @@
-import standings from "../data/standings.js";
+import { getStandingsData } from "../services/standingsService.js";
 
 export const getStandings = (req, res) => {
-  res.json(standings);
+    const standings = getStandingsData();
+
+    res.json(standings);
 };

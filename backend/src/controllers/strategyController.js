@@ -1,10 +1,10 @@
-import strategyData from "../data/strategyData.js";
+import { getStrategyForDriver } from "../services/strategyService.js";
 
 export const getStrategy = (req, res) => {
 
     const driverId = Number(req.params.driverId);
 
-    const strategy = strategyData[driverId];
+    const strategy = getStrategyForDriver(driverId);
 
     if (!strategy) {
         return res.status(404).json({
@@ -13,4 +13,5 @@ export const getStrategy = (req, res) => {
     }
 
     res.json(strategy);
+
 };

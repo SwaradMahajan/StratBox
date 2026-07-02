@@ -1,7 +1,7 @@
 const standings = [
   {
     position: 1,
-    driverId: 1,
+    driverCode: "NOR",
     tyre: "M",
     gap: "--",
     lastLap: "1:29.103",
@@ -9,7 +9,7 @@ const standings = [
   },
   {
     position: 2,
-    driverId: 5,
+    driverCode: "VER",
     tyre: "H",
     gap: "+2.1",
     lastLap: "1:29.248",
@@ -17,7 +17,7 @@ const standings = [
   },
   {
     position: 3,
-    driverId: 3,
+    driverCode: "LEC",
     tyre: "M",
     gap: "+4.6",
     lastLap: "1:29.382",
@@ -25,7 +25,7 @@ const standings = [
   },
   {
     position: 4,
-    driverId: 4,
+    driverCode: "HAM",
     tyre: "H",
     gap: "+6.8",
     lastLap: "1:29.512",
@@ -33,7 +33,7 @@ const standings = [
   },
   {
     position: 5,
-    driverId: 7,
+    driverCode: "RUS",
     tyre: "M",
     gap: "+8.4",
     lastLap: "1:29.604",
