@@ -1,0 +1,81 @@
+const teams = [
+  {
+    id: 1,
+    name: "McLaren",
+    shortName: "MCL",
+    color: "#FF8000",
+    logo: "mclaren.png",
+  },
+  {
+    id: 2,
+    name: "Ferrari",
+    shortName: "FER",
+    color: "#DC0000",
+    logo: "ferrari.png",
+  },
+  {
+    id: 3,
+    name: "Red Bull",
+    shortName: "RBR",
+    color: "#1E5BC6",
+    logo: "redbull.png",
+  },
+  {
+    id: 4,
+    name: "Mercedes",
+    shortName: "MER",
+    color: "#00D2BE",
+    logo: "mercedes.png",
+  },
+  {
+    id: 5,
+    name: "Aston Martin",
+    shortName: "AMR",
+    color: "#006F62",
+    logo: "astonmartin.png",
+  },
+  {
+    id: 6,
+    name: "Alpine",
+    shortName: "ALP",
+    color: "#0090FF",
+    logo: "alpine.png",
+  },
+  {
+    id: 7,
+    name: "Haas",
+    shortName: "HAA",
+    color: "#B6BABD",
+    logo: "haas.png",
+  },
+  {
+    id: 8,
+    name: "Williams",
+    shortName: "WIL",
+    color: "#005AFF",
+    logo: "williams.png",
+  },
+  {
+    id: 9,
+    name: "Racing Bulls",
+    shortName: "RB",
+    color: "#6692FF",
+    logo: "racingbulls.png",
+  },
+  {
+    id: 10,
+    name: "Audi",
+    shortName: "AUD",
+    color: "#008C45",
+    logo: "audi.png",
+  },
+  {
+    id: 11,
+    name: "Cadillac",
+    shortName: "CAD",
+    color: "#003DA5",
+    logo: "cadillac.png",
+  },
+];
+
+export default teams;

@@ -1,0 +1,13 @@
+export const TEAM_IDS = {
+  MCLAREN: 1,
+  FERRARI: 2,
+  RED_BULL: 3,
+  MERCEDES: 4,
+  ASTON_MARTIN: 5,
+  ALPINE: 6,
+  HAAS: 7,
+  WILLIAMS: 8,
+  RACING_BULLS: 9,
+  AUDI: 10,
+  CADILLAC: 11,
+};
