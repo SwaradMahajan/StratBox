@@ -1,78 +1,19 @@
 const countries = {
-  GB: {
-    name: "United Kingdom",
-    flag: "🇬🇧",
-  },
-
-  AU: {
-    name: "Australia",
-    flag: "🇦🇺",
-  },
-
-  MC: {
-    name: "Monaco",
-    flag: "🇲🇨",
-  },
-
-  NL: {
-    name: "Netherlands",
-    flag: "🇳🇱",
-  },
-
-  FR: {
-    name: "France",
-    flag: "🇫🇷",
-  },
-
-  IT: {
-    name: "Italy",
-    flag: "🇮🇹",
-  },
-
-  ES: {
-    name: "Spain",
-    flag: "🇪🇸",
-  },
-
-  CA: {
-    name: "Canada",
-    flag: "🇨🇦",
-  },
-
-  AR: {
-    name: "Argentina",
-    flag: "🇦🇷",
-  },
-
-  TH: {
-    name: "Thailand",
-    flag: "🇹🇭",
-  },
-
-  NZ: {
-    name: "New Zealand",
-    flag: "🇳🇿",
-  },
-
-  DE: {
-    name: "Germany",
-    flag: "🇩🇪",
-  },
-
-  BR: {
-    name: "Brazil",
-    flag: "🇧🇷",
-  },
-
-  MX: {
-    name: "Mexico",
-    flag: "🇲🇽",
-  },
-
-  FI: {
-    name: "Finland",
-    flag: "🇫🇮",
-  },
+  GB: "United Kingdom",
+  AU: "Australia",
+  MC: "Monaco",
+  NL: "Netherlands",
+  FR: "France",
+  IT: "Italy",
+  ES: "Spain",
+  CA: "Canada",
+  AR: "Argentina",
+  TH: "Thailand",
+  NZ: "New Zealand",
+  DE: "Germany",
+  BR: "Brazil",
+  MX: "Mexico",
+  FI: "Finland",
 };
 
 export default countries;

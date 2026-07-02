@@ -38,3 +38,26 @@
 .driver-card p {
     color: #c0c7d0;
 }
+.driver-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    color: #c9d1d9;
+    font-size: 0.95rem;
+}
+
+.flag-icon {
+    width: 26px;
+    height: 18px;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+.driver-number {
+    margin-top: 8px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: white;
+}

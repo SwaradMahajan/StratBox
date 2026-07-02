@@ -1,94 +1,101 @@
 import "./StrategyPanel.css";
+import strategyData from "../../data/strategyData";
 
 function StrategyPanel({ selectedDriver }) {
-  if (!selectedDriver) {
+  const strategy = selectedDriver
+    ? strategyData[selectedDriver.id]
+    : null;
+
+  if (!selectedDriver || !strategy) {
     return (
-      <section className="strategy-panel">
+      <div className="strategy-panel">
         <h2>Tyre Strategy</h2>
         <p>Select a driver to view strategy.</p>
-      </section>
+      </div>
     );
   }
 
   return (
-    <section className="strategy-panel">
+    <div className="strategy-panel">
       <h2>Tyre Strategy</h2>
 
       <h3>{selectedDriver.fullName}</h3>
 
-      {/* Top Info */}
       <div className="strategy-grid">
 
         <div className="strategy-box">
           <h4>Current Tyre</h4>
-          <p>Medium</p>
+          <p>{strategy.currentTyre}</p>
         </div>
 
         <div className="strategy-box">
           <h4>Tyre Age</h4>
-          <p>16 Laps</p>
+          <p>{strategy.tyreAge} Laps</p>
         </div>
 
         <div className="strategy-box">
           <h4>Predicted Pit Window</h4>
-          <p>Lap 31-35</p>
+          <p>
+            Lap {strategy.pitWindow.start}-{strategy.pitWindow.end}
+          </p>
         </div>
 
       </div>
 
-      {/* Recommended Strategies */}
-      <div className="recommendations">
+      <h3 className="strategy-title">
+        Recommended Strategies
+      </h3>
 
-        <h3>Recommended Strategies</h3>
+      <div className="recommendation-grid">
 
-        <div className="recommendation-grid">
+        <div className="recommendation-card">
+          <h4>One Stop</h4>
 
-          <div className="recommendation-card">
-            <h4>One Stop</h4>
+          <p>
+            <strong>Current:</strong> {strategy.currentTyre}
+          </p>
 
-            <p>
-              <strong>Current:</strong> Medium
-            </p>
+          <p>
+            <strong>Pit:</strong> Lap{" "}
+            {strategy.recommendedStrategies.oneStop.pitLap}
+          </p>
 
-            <p>
-              <strong>Pit:</strong> Lap 33
-            </p>
+          <p>
+            <strong>Next Tyre:</strong>{" "}
+            {strategy.recommendedStrategies.oneStop.nextTyre}
+          </p>
+        </div>
 
-            <p>
-              <strong>Next Tyre:</strong> Hard
-            </p>
-          </div>
+        <div className="recommendation-card">
+          <h4>Two Stop</h4>
 
-          <div className="recommendation-card">
-            <h4>Two Stop</h4>
+          <p>
+            <strong>Current:</strong> {strategy.currentTyre}
+          </p>
 
-            <p>
-              <strong>Current:</strong> Medium
-            </p>
+          <p>
+            <strong>Pit 1:</strong> Lap{" "}
+            {strategy.recommendedStrategies.twoStop[0].pitLap}
+            {" → "}
+            {strategy.recommendedStrategies.twoStop[0].nextTyre}
+          </p>
 
-            <p>
-              <strong>Pit 1:</strong> Lap 24 → Medium
-            </p>
-
-            <p>
-              <strong>Pit 2:</strong> Lap 43 → Soft
-            </p>
-          </div>
-
+          <p>
+            <strong>Pit 2:</strong> Lap{" "}
+            {strategy.recommendedStrategies.twoStop[1].pitLap}
+            {" → "}
+            {strategy.recommendedStrategies.twoStop[1].nextTyre}
+          </p>
         </div>
 
       </div>
 
-      {/* Estimated Finish */}
-      <div className="position-card">
-
+      <div className="prediction-box">
         <h3>Estimated Finish Position</h3>
 
-        <p>P4</p>
-
+        <h1>P{strategy.predictedFinish}</h1>
       </div>
-
-    </section>
+    </div>
   );
 }
 

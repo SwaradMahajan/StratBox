@@ -15,17 +15,16 @@ function TeamSelector({ selectedTeam, setSelectedTeam }) {
             }`}
             onClick={() => setSelectedTeam(team.id)}
           >
-            {team.name}
+            <img
+              src={team.logo}
+              alt={team.name}
+              className="team-logo"
+            />
+
+            <p>{team.name}</p>
           </div>
         ))}
       </div>
-
-      <p>
-        Selected Team:{" "}
-        {selectedTeam
-          ? teams.find((team) => team.id === selectedTeam).name
-          : "None"}
-      </p>
     </div>
   );
 }
