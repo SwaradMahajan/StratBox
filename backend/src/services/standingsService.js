@@ -1,68 +1,47 @@
-import { fetchFromOpenF1 } from "./OpenF1service.js";
+const BASE_URL = "https://api.jolpi.ca/ergast/f1/2026";
 
 export const getStandingsData = async () => {
-    const year = new Date().getFullYear();
+    try {
+        const [driverResponse, constructorResponse] = await Promise.all([
+            fetch(`${BASE_URL}/driverStandings.json`),
+            fetch(`${BASE_URL}/constructorStandings.json`)
+        ]);
 
-    const meetings = await fetchFromOpenF1(`/meetings?year=${year}`);
-
-    if (!meetings || meetings.length === 0) {
-        return [];
-    }
-
-    const now = new Date();
-
-    let currentMeeting = null;
-    let nextRace = null;
-
-    for (const meeting of meetings) {
-        const start = new Date(meeting.date_start);
-        const end = new Date(meeting.date_end);
-
-        if (now >= start && now <= end) {
-            currentMeeting = meeting;
+        if (!driverResponse.ok || !constructorResponse.ok) {
+            throw new Error("Failed to fetch championship standings");
         }
 
-        if (start > now && !nextRace) {
-            nextRace = meeting;
-        }
+        const driverData = await driverResponse.json();
+        const constructorData = await constructorResponse.json();
+
+        const driverStandings =
+            driverData.MRData.StandingsTable.StandingsLists[0]?.DriverStandings.map(
+                (driver) => ({
+                    position: driver.position,
+                    points: driver.points,
+                    wins: driver.wins,
+                    driver: `${driver.Driver.givenName} ${driver.Driver.familyName}`,
+                    code: driver.Driver.code,
+                    constructor: driver.Constructors[0].name,
+                })
+            ) || [];
+
+        const constructorStandings =
+            constructorData.MRData.StandingsTable.StandingsLists[0]?.ConstructorStandings.map(
+                (team) => ({
+                    position: team.position,
+                    points: team.points,
+                    wins: team.wins,
+                    constructor: team.Constructor.name,
+                })
+            ) || [];
+
+        return {
+            drivers: driverStandings,
+            constructors: constructorStandings,
+        };
+    } catch (error) {
+        console.error("Standings Service Error:", error);
+        throw error;
     }
-
-    // Use current race weekend if live,
-    // otherwise use the upcoming race weekend.
-    const targetMeeting = currentMeeting || nextRace;
-
-    if (!targetMeeting) {
-        return [];
-    }
-
-    // Fetch all sessions for this meeting
-    const sessions = await fetchFromOpenF1(
-        `/sessions?meeting_key=${targetMeeting.meeting_key}`
-    );
-
-    if (!sessions || sessions.length === 0) {
-        return [];
-    }
-
-    // Find the main Race session
-    const raceSession = sessions.find(
-        (session) => session.session_name === "Race"
-    );
-
-    if (!raceSession) {
-        return [];
-    }
-
-    // Fetch live positions
-    const positions = await fetchFromOpenF1(
-        `/position?session_key=${raceSession.session_key}`
-    );
-
-    // If race hasn't started yet,
-    // OpenF1 returns an empty array.
-    if (!positions || positions.length === 0) {
-        return [];
-    }
-
-    return positions;
 };

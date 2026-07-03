@@ -1,93 +1,69 @@
-import { fetchFromOpenF1 } from "./OpenF1service.js";
+const BASE_URL = "https://api.jolpi.ca/ergast/f1/2026";
+const LIMIT = 100;
 
 export const getRaceData = async () => {
-  const year = new Date().getFullYear();
+    try {
+        // Fetch schedule
+        const response = await fetch(
+            `${BASE_URL}.json?limit=${LIMIT}`
+        );
 
-  const meetings = await fetchFromOpenF1(`/meetings?year=${year}`);
+        if (!response.ok) {
+            throw new Error("Failed to fetch race schedule");
+        }
 
-  if (!meetings || meetings.length === 0) {
-    return null;
-  }
+        const data = await response.json();
 
-  const now = new Date();
+        const races = data.MRData.RaceTable.Races;
 
-  let latestRace = null;
-  let nextRace = null;
-  let currentMeeting = null;
+        const now = new Date();
 
-  // Find latest, next and current meeting
-  for (const meeting of meetings) {
-    const start = new Date(meeting.date_start);
-    const end = new Date(meeting.date_end);
+        let latestRace = null;
+        let nextRace = null;
 
-    if (end < now) {
-      latestRace = meeting;
-    }
+        for (const race of races) {
+            const raceDate = new Date(race.date);
 
-    if (start > now && !nextRace) {
-      nextRace = meeting;
-    }
+            if (raceDate <= now) {
+                latestRace = race;
+            }
 
-    if (now >= start && now <= end) {
-      currentMeeting = meeting;
-    }
-  }
+            if (raceDate > now && !nextRace) {
+                nextRace = race;
+            }
+        }
 
-  // We are currently in a race weekend
-  if (currentMeeting) {
-    const sessions = await fetchFromOpenF1(
-      `/sessions?meeting_key=${currentMeeting.meeting_key}`
-    );
-
-    const raceSession = sessions.find(
-      (session) => session.session_name === "Race"
-    );
-
-    if (raceSession) {
-      const raceStart = new Date(raceSession.date_start);
-      const raceEnd = new Date(raceSession.date_end);
-
-      if (now >= raceStart && now <= raceEnd) {
         return {
-          status: "LIVE",
+            status: "OFF_WEEKEND",
 
-          race: {
-            meetingKey: currentMeeting.meeting_key,
-            grandPrix: currentMeeting.meeting_name,
-            circuit: currentMeeting.circuit_short_name,
-            country: currentMeeting.country_name,
-            startDate: raceSession.date_start,
-            endDate: raceSession.date_end,
-          },
+            latestRace: latestRace
+                ? {
+                      round: latestRace.round,
+                      grandPrix: latestRace.raceName,
+                      circuit: latestRace.Circuit.circuitName,
+                      locality:
+                          latestRace.Circuit.Location.locality,
+                      country:
+                          latestRace.Circuit.Location.country,
+                      date: latestRace.date,
+                  }
+                : null,
+
+            nextRace: nextRace
+                ? {
+                      round: nextRace.round,
+                      grandPrix: nextRace.raceName,
+                      circuit: nextRace.Circuit.circuitName,
+                      locality:
+                          nextRace.Circuit.Location.locality,
+                      country:
+                          nextRace.Circuit.Location.country,
+                      date: nextRace.date,
+                  }
+                : null,
         };
-      }
+    } catch (error) {
+        console.error("Race Service Error:", error);
+        throw error;
     }
-  }
-
-  // No live race
-  return {
-    status: "OFF_WEEKEND",
-
-    latestRace: latestRace
-      ? {
-          meetingKey: latestRace.meeting_key,
-          grandPrix: latestRace.meeting_name,
-          circuit: latestRace.circuit_short_name,
-          country: latestRace.country_name,
-          startDate: latestRace.date_start,
-          endDate: latestRace.date_end,
-        }
-      : null,
-
-    nextRace: nextRace
-      ? {
-          meetingKey: nextRace.meeting_key,
-          grandPrix: nextRace.meeting_name,
-          circuit: nextRace.circuit_short_name,
-          country: nextRace.country_name,
-          startDate: nextRace.date_start,
-          endDate: nextRace.date_end,
-        }
-      : null,
-  };
 };
