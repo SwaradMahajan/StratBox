@@ -1,14 +1,38 @@
+import { useState, useEffect } from "react";
+
 import "./DriverSelector.css";
-import drivers from "../../data/drivers";
 import FLAG_IMAGES from "../../assets/flagImages";
-import countries from "../../data/countries";
-import teams from "../../data/teams";
+import DRIVER_IMAGES from "../../assets/driverImages";
 
 function DriverSelector({
   selectedTeam,
   selectedDriver,
   setSelectedDriver,
 }) {
+  const [drivers, setDrivers] = useState([]);
+
+  useEffect(() => {
+    const fetchDrivers = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/drivers"
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch drivers");
+        }
+
+        const data = await response.json();
+
+        setDrivers(data);
+      } catch (error) {
+        console.error("Error fetching drivers:", error);
+      }
+    };
+
+    fetchDrivers();
+  }, []);
+
   const filteredDrivers = drivers.filter(
     (driver) => driver.teamId === selectedTeam
   );
@@ -22,60 +46,37 @@ function DriverSelector({
       ) : (
         <div className="driver-grid">
           {filteredDrivers.map((driver) => {
-                const team = teams.find(
-                    (t) => t.id === driver.teamId
-                );
+            const flag = FLAG_IMAGES[driver.countryCode];
+            const photo = DRIVER_IMAGES[driver.code];
 
-                const flag = FLAG_IMAGES[driver.countryCode];
-
-                const countryName = countries[driver.countryCode];
             return (
-                <div
-                    key={driver.id}
-                    className={`driver-card ${
-                        selectedDriver?.id === driver.id ? "active" : ""
-                    }`}
-                    style={{
-                        borderColor:
-                            selectedDriver?.id === driver.id
-                                ? team.color
-                                : "#30363d",
-                    }}
-                    onClick={() => setSelectedDriver(driver)}
-                >
+              <div
+                key={driver.id}
+                className={`driver-card ${
+                  selectedDriver?.id === driver.id ? "active" : ""
+                }`}
+                onClick={() => setSelectedDriver(driver)}
+              >
+                <img
+                  src={photo}
+                  alt={driver.fullName}
+                  className="driver-photo"
+                />
 
-                    <div
-                        className="driver-accent"
-                        style={{ backgroundColor: team.color }}
-                    />
+                <h3>{driver.fullName}</h3>
 
-                    <img
-                        src={driver.photo}
-                        alt={driver.fullName}
-                        className="driver-photo"
-                    />
+                <div className="driver-meta">
+                  <img
+                    src={flag}
+                    alt={driver.countryCode}
+                    className="flag-icon"
+                  />
 
-                    <h3>{driver.fullName}</h3>
-
-                    <div className="driver-country">
-
-                        <img
-                            src={flag}
-                            alt={countryName}
-                            className="flag-icon"
-                        />
-
-                        <span>{countryName}</span>
-
-                    </div>
-
-                    <p className="driver-number">
-                        #{driver.number}
-                    </p>
-
+                  <span>#{driver.number}</span>
                 </div>
+              </div>
             );
-            })}
+          })}
         </div>
       )}
     </div>

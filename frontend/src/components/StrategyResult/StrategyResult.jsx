@@ -1,5 +1,4 @@
-import "./StrategyPanel.css";
-import strategyData from "../../data/strategyData";
+import "./StrategyResult.css";
 
 function tyreBadge(tyre) {
   switch (tyre) {
@@ -12,74 +11,56 @@ function tyreBadge(tyre) {
     case "Hard":
       return <span className="tyre hard">HARD</span>;
 
+    case "Intermediate":
+      return <span className="tyre intermediate">INTERMEDIATE</span>;
+
+    case "Wet":
+      return <span className="tyre wet">WET</span>;
+
     default:
       return <span>{tyre}</span>;
   }
 }
 
-function StrategyPanel({ selectedDriver }) {
-  if (!selectedDriver) {
-    return (
-      <div className="strategy-panel">
-        <h2>Tyre Strategy</h2>
-        <p>Select a driver to view strategy.</p>
-      </div>
-    );
-  }
-
-  const strategy = strategyData[selectedDriver.id];
-
-  if (!strategy) {
-    return (
-      <div className="strategy-panel">
-        <h2>Tyre Strategy</h2>
-        <p>No strategy data available.</p>
-      </div>
-    );
-  }
+function StrategyResult({ strategy, driverName }) {
+  if (!strategy) return null;
 
   return (
     <div className="strategy-panel">
-
       <h2>Tyre Strategy</h2>
 
-      <h3>{selectedDriver.fullName}</h3>
-
-      {/* Current Tyre */}
+      {driverName && <h3>{driverName}</h3>}
 
       <div className="current-tyre">
-
         <h4>Current Compound</h4>
 
         {tyreBadge(strategy.currentTyre)}
 
         <p>Age: {strategy.tyreAge} laps</p>
-
       </div>
 
-      {/* Strategy Cards */}
-
       <div className="strategy-cards">
-
         <div className="strategy-card recommended">
-
           <h4>⭐ Recommended</h4>
 
           <h3>One Stop</h3>
 
-          <p><strong>Pit Lap:</strong> {strategy.oneStop.pitLap}</p>
+          <p>
+            <strong>Pit Lap:</strong> {strategy.oneStop.pitLap}
+          </p>
 
           <p>
             <strong>Next Tyre:</strong>{" "}
             {tyreBadge(strategy.oneStop.nextTyre)}
           </p>
 
-          <p><strong>Finish:</strong> {strategy.oneStop.finish}</p>
-
+          <p>
+            <strong>Expected Finish:</strong>{" "}
+            {strategy.oneStop.finish}
+          </p>
         </div>
 
         <div className="strategy-card">
-
           <h4>Alternative</h4>
 
           <h3>Two Stop</h3>
@@ -104,14 +85,14 @@ function StrategyPanel({ selectedDriver }) {
             {tyreBadge(strategy.twoStop.secondTyre)}
           </p>
 
-          <p><strong>Finish:</strong> {strategy.twoStop.finish}</p>
-
+          <p>
+            <strong>Expected Finish:</strong>{" "}
+            {strategy.twoStop.finish}
+          </p>
         </div>
-
       </div>
-
     </div>
   );
 }
 
-export default StrategyPanel;
+export default StrategyResult;

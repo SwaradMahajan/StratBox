@@ -1,0 +1,166 @@
+.previous-results-page {
+    min-height: 100vh;
+    background: #131720;
+    padding: 40px;
+}
+
+.previous-results-page h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.4rem;
+}
+
+.race-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.loading,
+.error {
+    color: white;
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 50px;
+}
+
+/* ---------------- Modal ---------------- */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 999;
+}
+
+.modal-content {
+    background: #1d1f27;
+    width: 90%;
+    max-width: 1100px;
+    max-height: 85vh;
+
+    overflow-y: auto;
+
+    border-radius: 15px;
+
+    padding: 30px;
+
+    position: relative;
+
+    border: 1px solid #2d313d;
+}
+
+.modal-content h2 {
+    color: white;
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    color: #d0d0d0;
+    margin: 6px 0;
+}
+
+.close-btn {
+    position: absolute;
+
+    right: 20px;
+    top: 20px;
+
+    background: #e10600;
+
+    color: white;
+
+    border: none;
+
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-size: 18px;
+}
+
+.close-btn:hover {
+    background: #ff2d2d;
+}
+
+/* ---------------- Table ---------------- */
+
+.results-table {
+    width: 100%;
+
+    margin-top: 25px;
+
+    border-collapse: collapse;
+}
+
+.results-table th {
+    background: #e10600;
+
+    color: white;
+
+    padding: 12px;
+}
+
+.results-table td {
+    padding: 12px;
+
+    color: white;
+
+    text-align: center;
+
+    border-bottom: 1px solid #333;
+}
+
+.results-table tr:hover {
+    background: #242833;
+}
+
+/* ---------------- Scrollbar ---------------- */
+
+.modal-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 20px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* ---------------- Mobile ---------------- */
+
+@media (max-width: 768px) {
+
+    .previous-results-page {
+        padding: 20px;
+    }
+
+    .previous-results-page h1 {
+        font-size: 2rem;
+    }
+
+    .modal-content {
+        padding: 20px;
+    }
+
+    .results-table {
+        font-size: 13px;
+    }
+
+    .results-table th,
+    .results-table td {
+        padding: 8px;
+    }
+}

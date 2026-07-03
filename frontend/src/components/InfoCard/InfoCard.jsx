@@ -1,8 +1,6 @@
 import "./InfoCard.css";
 
-import raceData from "../../data/raceData";
-
-function InfoCard() {
+function InfoCard({ raceData }) {
   return (
     <div className="info-card">
 
