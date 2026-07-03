@@ -1,17 +1,32 @@
-import { getStrategyForDriver } from "../services/strategyService.js";
+import {
+  getStrategyData,
+  generateStrategyData,
+} from "../services/strategyService.js";
 
-export const getStrategy = (req, res) => {
+export const getStrategy = async (req, res) => {
+  try {
+    const { driverId } = req.params;
 
-    const driverId = Number(req.params.driverId);
-
-    const strategy = getStrategyForDriver(driverId);
-
-    if (!strategy) {
-        return res.status(404).json({
-            message: "Strategy not found",
-        });
-    }
+    const strategy = await getStrategyData(driverId);
 
     res.json(strategy);
+  } catch (error) {
+    res.status(500).json({
+      message: "Failed to generate strategy",
+      error: error.message,
+    });
+  }
+};
 
+export const generateStrategy = async (req, res) => {
+  try {
+    const strategy = await generateStrategyData(req.body);
+
+    res.json(strategy);
+  } catch (error) {
+    res.status(500).json({
+      message: "Failed to generate strategy",
+      error: error.message,
+    });
+  }
 };

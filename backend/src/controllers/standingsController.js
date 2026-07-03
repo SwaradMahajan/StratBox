@@ -1,7 +1,15 @@
 import { getStandingsData } from "../services/standingsService.js";
 
-export const getStandings = (req, res) => {
-    const standings = getStandingsData();
+export const getStandings = async (req, res) => {
+    try {
+        const standings = await getStandingsData();
+        res.json(standings);
+    } catch (error) {
+        console.error(error);
 
-    res.json(standings);
+        res.status(500).json({
+            message: "Failed to fetch standings",
+            error: error.message
+        });
+    }
 };
