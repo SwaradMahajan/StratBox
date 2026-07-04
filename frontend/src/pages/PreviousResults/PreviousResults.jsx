@@ -65,7 +65,9 @@ function PreviousResults() {
 
     return (
         <div className="previous-results-page">
-            <h1>Previous Results</h1>
+            <h1 className="racehub-heading">
+                PREVIOUS RESULTS
+            </h1>
 
             {loading ? (
                 <div className="loading">Loading previous races...</div>

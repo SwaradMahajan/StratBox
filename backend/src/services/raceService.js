@@ -3,7 +3,6 @@ const LIMIT = 100;
 
 export const getRaceData = async () => {
     try {
-        // Fetch schedule
         const response = await fetch(
             `${BASE_URL}.json?limit=${LIMIT}`
         );
@@ -20,8 +19,10 @@ export const getRaceData = async () => {
 
         let latestRace = null;
         let nextRace = null;
+        let weekendRace = null;
 
         for (const race of races) {
+
             const raceDate = new Date(race.date);
 
             if (raceDate <= now) {
@@ -31,9 +32,57 @@ export const getRaceData = async () => {
             if (raceDate > now && !nextRace) {
                 nextRace = race;
             }
+
+            const friday = new Date(raceDate);
+            friday.setDate(friday.getDate() - 2);
+            friday.setHours(0, 0, 0, 0);
+
+            const sunday = new Date(raceDate);
+            sunday.setHours(23, 59, 59, 999);
+
+            if (now >= friday && now <= sunday) {
+                weekendRace = race;
+            }
         }
 
+        /* ==========================
+           RACE WEEKEND
+        ========================== */
+
+        if (weekendRace) {
+
+            return {
+
+                status: "RACE_WEEKEND",
+
+                race: {
+
+                    round: weekendRace.round,
+
+                    grandPrix: weekendRace.raceName,
+
+                    circuit: weekendRace.Circuit.circuitName,
+
+                    locality:
+                        weekendRace.Circuit.Location.locality,
+
+                    country:
+                        weekendRace.Circuit.Location.country,
+
+                    date: weekendRace.date,
+
+                },
+
+            };
+
+        }
+
+        /* ==========================
+           OFF WEEKEND
+        ========================== */
+
         return {
+
             status: "OFF_WEEKEND",
 
             latestRace: latestRace
@@ -61,9 +110,14 @@ export const getRaceData = async () => {
                       date: nextRace.date,
                   }
                 : null,
+
         };
+
     } catch (error) {
+
         console.error("Race Service Error:", error);
+
         throw error;
+
     }
 };

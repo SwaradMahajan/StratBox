@@ -41,7 +41,7 @@ function StrategyResult({ strategy, driverName }) {
 
       <div className="strategy-cards">
         <div className="strategy-card recommended">
-          <h4>⭐ Recommended</h4>
+          <h4>Recommended</h4>
 
           <h3>One Stop</h3>
 
@@ -54,10 +54,6 @@ function StrategyResult({ strategy, driverName }) {
             {tyreBadge(strategy.oneStop.nextTyre)}
           </p>
 
-          <p>
-            <strong>Expected Finish:</strong>{" "}
-            {strategy.oneStop.finish}
-          </p>
         </div>
 
         <div className="strategy-card">
@@ -83,11 +79,6 @@ function StrategyResult({ strategy, driverName }) {
           <p>
             <strong>Tyre:</strong>{" "}
             {tyreBadge(strategy.twoStop.secondTyre)}
-          </p>
-
-          <p>
-            <strong>Expected Finish:</strong>{" "}
-            {strategy.twoStop.finish}
           </p>
         </div>
       </div>

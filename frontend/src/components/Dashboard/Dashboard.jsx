@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import Navbar from "../../components/Navbar/Navbar";
+
 import TopSection from "../../components/TopSection/TopSection";
 import StrategyLab from "../../components/StrategyLab/StrategyLab";
 
@@ -33,7 +33,6 @@ function Dashboard() {
 
   return (
     <>
-      <Navbar />
 
       <div className="dashboard">
         <TopSection raceData={raceData} />

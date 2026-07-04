@@ -2,94 +2,138 @@
     margin-top: 35px;
 }
 
+/* ===========================
+            GRID
+=========================== */
+
 .driver-grid {
+
     display: grid;
 
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
 
-    gap: 22px;
+    gap: 18px;
+
 }
 
+/* ===========================
+            CARD
+=========================== */
+
 .driver-card {
-    position: relative;
 
     background: #1b1f27;
 
-    border: 2px solid #30363d;
+    border: 1px solid #30363d;
 
-    border-radius: 16px;
+    border-radius: 18px;
 
-    padding: 28px 20px;
+    padding: 18px 22px;
 
-    overflow: hidden;
-
-    text-align: center;
-
-    cursor: pointer;
-
-    transition: all 0.25s ease;
-}
-
-.driver-card:hover {
-    transform: translateY(-6px);
-
-    box-shadow: 0 10px 25px rgba(0, 0, 0, .35);
-}
-
-.driver-card.active {
-    transform: translateY(-4px);
-}
-
-.driver-accent {
-    position: absolute;
-
-    left: 0;
-    right: 0;
-    top: 0;
-
-    height: 6px;
-}
-
-.driver-photo {
-    width: 120px;
-
-    height: 120px;
-
-    object-fit: contain;
-
-    margin-bottom: 18px;
-}
-
-.driver-card h3 {
-    color: white;
-
-    margin-bottom: 15px;
-}
-
-.driver-country {
     display: flex;
-
-    justify-content: center;
 
     align-items: center;
 
-    gap: 8px;
+    gap: 22px;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+}
+
+.driver-card:hover {
+
+    transform: translateY(-5px);
+
+    border-color: #E10600;
+
+    box-shadow: 0 10px 28px rgba(225, 6, 0, .18);
+
+}
+
+.driver-card.active {
+
+    border: 2px solid #E10600;
+
+    box-shadow: 0 12px 30px rgba(225, 6, 0, .25);
+
+}
+
+/* ===========================
+            PHOTO
+=========================== */
+
+.driver-photo {
+
+    width: 95px;
+
+    height: 95px;
+
+    object-fit: cover;
+
+    object-position: top center;
+
+    border-radius: 10px;
+
+    flex-shrink: 0;
+
+}
+
+/* ===========================
+            INFO
+=========================== */
+
+.driver-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+}
+
+.driver-info h3 {
+
+    color: white;
+
+    margin: 0 0 12px;
+
+    font-size: 1.25rem;
+
+    font-weight: 700;
+
+}
+
+/* ===========================
+            META
+=========================== */
+
+.driver-meta {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
 
     color: #c7ced8;
 
-    margin-bottom: 14px;
+    font-size: 1rem;
+
+    font-weight: 600;
+
 }
 
 .flag-icon {
-    width: 24px;
+
+    width: 26px;
+
+    height: 18px;
+
+    object-fit: cover;
 
     border-radius: 3px;
-}
 
-.driver-number {
-    font-size: 1.3rem;
-
-    font-weight: bold;
-
-    color: white;
 }

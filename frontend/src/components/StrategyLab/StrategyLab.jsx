@@ -63,108 +63,137 @@ function StrategyLab() {
   };
 
   return (
-    <div className="strategy-lab">
+  
+  <div className="strategy-lab">
+     <div className="selection-card">
 
-      <h1>Strategy Simulator</h1>
+    <TeamSelector
+      selectedTeam={selectedTeam}
+      setSelectedTeam={setSelectedTeam}
+    />
 
-      <TeamSelector
-        selectedTeam={selectedTeam}
-        setSelectedTeam={setSelectedTeam}
-      />
-
+    {selectedTeam && (
       <DriverSelector
         selectedTeam={selectedTeam}
         selectedDriver={selectedDriver}
         setSelectedDriver={setSelectedDriver}
       />
+    )}
+    </div>
+    <div className="lab-inputs">
 
-      <div className="lab-inputs">
+        <div className="input-grid">
 
-        <label>Current Tyre</label>
+            <div className="input-group">
+                <label>Current Tyre</label>
 
-        <select
-          value={currentTyre}
-          onChange={(e) => setCurrentTyre(e.target.value)}
-        >
-          <option>Soft</option>
-          <option>Medium</option>
-          <option>Hard</option>
-        </select>
+                <select
+                    value={currentTyre}
+                    onChange={(e) => setCurrentTyre(e.target.value)}
+                >
+                    <option>Soft</option>
+                    <option>Medium</option>
+                    <option>Hard</option>
+                </select>
+            </div>
 
-        <label>Tyre Age (laps)</label>
+            <div className="input-group">
+                <label>Tyre Age</label>
 
-        <input
-          type="number"
-          min="0"
-          value={tyreAge}
-          onChange={(e) => setTyreAge(Number(e.target.value))}
-        />
+                <input
+                    type="number"
+                    min="0"
+                    value={tyreAge}
+                    onChange={(e) => setTyreAge(Number(e.target.value))}
+                />
+            </div>
 
-        <label>Laps Remaining</label>
+            <div className="input-group">
+                <label>Laps Remaining</label>
 
-        <input
-          type="number"
-          min="1"
-          value={lapsRemaining}
-          onChange={(e) => setLapsRemaining(Number(e.target.value))}
-        />
+                <input
+                    type="number"
+                    min="1"
+                    value={lapsRemaining}
+                    onChange={(e) => setLapsRemaining(Number(e.target.value))}
+                />
+            </div>
 
-        <label>Gap Ahead (seconds)</label>
+            <div className="input-group">
+                <label>Gap Ahead</label>
 
-        <input
-          type="number"
-          step="0.1"
-          value={gapAhead}
-          onChange={(e) => setGapAhead(Number(e.target.value))}
-        />
+                <input
+                    type="number"
+                    step="0.1"
+                    value={gapAhead}
+                    onChange={(e) => setGapAhead(Number(e.target.value))}
+                />
+            </div>
 
-        <label>Gap Behind (seconds)</label>
+            <div className="input-group">
+                <label>Gap Behind</label>
 
-        <input
-          type="number"
-          step="0.1"
-          value={gapBehind}
-          onChange={(e) => setGapBehind(Number(e.target.value))}
-        />
+                <input
+                    type="number"
+                    step="0.1"
+                    value={gapBehind}
+                    onChange={(e) => setGapBehind(Number(e.target.value))}
+                />
+            </div>
 
-        <label>Weather</label>
+            <div className="input-group">
+                <label>Weather</label>
 
-        <select
-          value={weather}
-          onChange={(e) => setWeather(e.target.value)}
-        >
-          <option>Dry</option>
-          <option>Wet</option>
-        </select>
+                <select
+                    value={weather}
+                    onChange={(e) => setWeather(e.target.value)}
+                >
+                    <option>Dry</option>
+                    <option>Wet</option>
+                </select>
+            </div>
 
-        <label className="checkbox-row">
-          <input
-            type="checkbox"
-            checked={safetyCar}
-            onChange={(e) => setSafetyCar(e.target.checked)}
-          />
+            <div className="input-group">
+                <label>Safety Car</label>
 
-          Safety Car Deployed
-        </label>
+                <div className="checkbox-container">
 
-        <button
-          onClick={generateStrategy}
-          disabled={loading}
-        >
-          {loading ? "Generating..." : "Generate Strategy"}
-        </button>
+                    <input
+                        type="checkbox"
+                        checked={safetyCar}
+                        onChange={(e) => setSafetyCar(e.target.checked)}
+                    />
 
-      </div>
+                    <span>Deployed</span>
 
-      {strategy && (
-        <StrategyResult
-          strategy={strategy}
-          driverName={selectedDriver?.fullName}
-        />
-      )}
+                </div>
+            </div>
+
+            <div className="input-group">
+
+                <label>&nbsp;</label>
+
+                <button
+                    className="generate-btn"
+                    onClick={generateStrategy}
+                    disabled={loading}
+                >
+                    {loading ? "Generating..." : "Generate Strategy"}
+                </button>
+
+            </div>
+
+        </div>
 
     </div>
-  );
+    {strategy && (
+        <StrategyResult
+            strategy={strategy}
+            driverName={selectedDriver?.fullName}
+        />
+    )}
+  </div>
+);
 }
 
 export default StrategyLab;

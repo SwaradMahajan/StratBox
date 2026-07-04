@@ -5,11 +5,14 @@ function TeamSelector({ selectedTeam, setSelectedTeam }) {
   return (
     <div className="team-selector">
 
-      <h2>Select Team</h2>
+      <div className="section-header">
+          <h2>Select Team</h2>
+          <p>Choose a constructor to begin your race strategy simulation.</p>
+      </div>
 
       <div className="team-grid">
 
-        {teams.map((team) => (
+      {teams.map((team) => (
 
           <div
             key={team.id}

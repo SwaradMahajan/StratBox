@@ -39,7 +39,10 @@ function DriverSelector({
 
   return (
     <div className="driver-selector">
-      <h2>Select Driver</h2>
+    <div className="section-header">
+        <h2>Select Driver</h2>
+        <p>Choose the driver you want to simulate.</p>
+    </div>
 
       {!selectedTeam ? (
         <p>Select a team first.</p>
@@ -57,23 +60,31 @@ function DriverSelector({
                 }`}
                 onClick={() => setSelectedDriver(driver)}
               >
-                <img
-                  src={photo}
-                  alt={driver.fullName}
-                  className="driver-photo"
-                />
 
-                <h3>{driver.fullName}</h3>
-
-                <div className="driver-meta">
                   <img
-                    src={flag}
-                    alt={driver.countryCode}
-                    className="flag-icon"
+                      src={photo}
+                      alt={driver.fullName}
+                      className="driver-photo"
                   />
 
-                  <span>#{driver.number}</span>
-                </div>
+                  <div className="driver-info">
+
+                      <h3>{driver.fullName}</h3>
+
+                      <div className="driver-meta">
+
+                          <img
+                              src={flag}
+                              alt={driver.countryCode}
+                              className="flag-icon"
+                          />
+
+                          <span>#{driver.number}</span>
+
+                      </div>
+
+                  </div>
+
               </div>
             );
           })}

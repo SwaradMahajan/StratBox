@@ -3,9 +3,6 @@ import { generateStrategy } from "../strategy/strategyEngine.js";
 // LIVE MODE
 export const getStrategyData = async (driverId) => {
 
-  // TODO:
-  // Replace these mock values with OpenF1 live telemetry.
-
   const raceData = {
     type: "Medium",
     tyreAge: 24,

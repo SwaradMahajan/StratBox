@@ -52,7 +52,6 @@ export function generateStrategy(data) {
     oneStop: {
       pitLap: recommendedPit,
       nextTyre: oneStopTyre,
-      finish: "Recommended",
     },
 
     twoStop: {
@@ -63,8 +62,6 @@ export function generateStrategy(data) {
       secondPit: Math.max(lapsRemaining - 12, 35),
 
       secondTyre: "Soft",
-
-      finish: "Alternative",
     },
   };
 }

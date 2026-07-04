@@ -1,18 +1,47 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
-  return (
-    <nav className="navbar">
-      <div className="logo">StratBox</div>
+    return (
+        <nav className="navbar">
 
-      <div className="nav-links">
-        <Link to="/">Live Race</Link>
-        <Link to="/results">Previous Results</Link>
-        <Link to="/championship">Championship</Link>
-      </div>
-    </nav>
-  );
+            <div className="logo">
+                Strat<span>Box</span>
+            </div>
+
+            <div className="nav-links">
+
+                <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                        isActive ? "nav-item active" : "nav-item"
+                    }
+                >
+                    RaceHub
+                </NavLink>
+
+                <NavLink
+                    to="/results"
+                    className={({ isActive }) =>
+                        isActive ? "nav-item active" : "nav-item"
+                    }
+                >
+                    Results
+                </NavLink>
+
+                <NavLink
+                    to="/championship"
+                    className={({ isActive }) =>
+                        isActive ? "nav-item active" : "nav-item"
+                    }
+                >
+                    Championship
+                </NavLink>
+
+            </div>
+
+        </nav>
+    );
 }
 
 export default Navbar;

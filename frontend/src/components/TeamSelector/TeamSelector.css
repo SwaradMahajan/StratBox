@@ -1,78 +1,182 @@
 .team-selector {
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
-.team-selector h2 {
-    color: white;
-    margin-bottom: 20px;
+/* ===========================
+        SECTION HEADER
+=========================== */
+
+.section-header {
+    margin-bottom: 25px;
 }
+
+.section-header h2 {
+    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.section-header p {
+    color: #8c94a3;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* ===========================
+            GRID
+=========================== */
 
 .team-grid {
+
     display: grid;
 
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
 
     gap: 18px;
+
 }
 
+/* ===========================
+            CARD
+=========================== */
+
 .team-card {
+
     position: relative;
 
     background: #1b1f27;
 
-    border: 2px solid #30363d;
+    border: 1px solid #30363d;
 
-    border-radius: 16px;
+    border-radius: 18px;
 
-    padding: 22px;
+    height: 165px;
+
+    padding: 18px;
 
     cursor: pointer;
 
-    transition: all 0.25s ease;
-
-    text-align: center;
-
     overflow: hidden;
+
+    transition: all .25s ease;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
 }
 
 .team-card:hover {
-    transform: translateY(-5px);
 
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+    transform: translateY(-6px);
+
+    border-color: #E10600;
+
+    box-shadow: 0 12px 28px rgba(225, 6, 0, .18);
+
 }
 
 .team-card.active {
-    transform: translateY(-3px);
+
+    border-width: 2px;
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 15px 30px rgba(225, 6, 0, .25);
+
 }
 
+/* ===========================
+        TEAM STRIPE
+=========================== */
+
 .team-accent {
+
     position: absolute;
 
     top: 0;
-    left: 0;
-    right: 0;
 
-    height: 6px;
+    left: 0;
+
+    width: 100%;
+
+    height: 5px;
+
 }
 
-.team-logo {
-    width: 90px;
+/* ===========================
+        LOGO AREA
+=========================== */
 
-    height: 60px;
+.team-logo {
+
+    width: 120px;
+
+    height: 65px;
 
     object-fit: contain;
 
-    margin: 15px auto;
+    object-position: center;
 
-    display: block;
+    margin-bottom: 20px;
+
+    transition: transform .25s ease;
+
 }
 
+.team-card:hover .team-logo {
+
+    transform: scale(1.08);
+
+}
+
+/* ===========================
+        TEAM NAME
+=========================== */
+
 .team-card p {
-    margin-top: 10px;
 
     color: white;
 
-    font-weight: 600;
+    font-size: 1.05rem;
 
-    font-size: 1rem;
+    font-weight: 700;
+
+    letter-spacing: .3px;
+
+    margin: 0;
+
+}
+
+/* ===========================
+        RESPONSIVE
+=========================== */
+
+@media(max-width:900px) {
+
+    .team-grid {
+
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+
+    }
+
+    .team-card {
+
+        height: 150px;
+
+    }
+
+    .team-logo {
+
+        width: 100px;
+
+        height: 55px;
+
+    }
+
 }
