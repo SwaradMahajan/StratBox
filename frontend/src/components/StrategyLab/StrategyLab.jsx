@@ -3,6 +3,7 @@ import { useState } from "react";
 import TeamSelector from "../TeamSelector/TeamSelector";
 import DriverSelector from "../DriverSelector/DriverSelector";
 import StrategyResult from "../StrategyResult/StrategyResult";
+import { API_URL } from "../../config";
 
 import "./StrategyLab.css";
 
@@ -30,7 +31,7 @@ function StrategyLab() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/api/strategy", {
+      const response = await fetch(`${API_URL}/api/strategy`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
