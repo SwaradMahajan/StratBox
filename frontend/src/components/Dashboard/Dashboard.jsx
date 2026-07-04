@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 
 import TopSection from "../../components/TopSection/TopSection";
 import StrategyLab from "../../components/StrategyLab/StrategyLab";
+import "./Dashboard.css";
+import "../../pages/PreviousResults/PreviousResults.css";
 
 import "./Dashboard.css";
 
@@ -28,7 +30,19 @@ function Dashboard() {
   }, []);
 
   if (loading) {
-    return <h2>Loading...</h2>;
+      return (
+          <div className="previous-results-page">
+
+              <h1 className="racehub-heading">
+                  RACE HUB
+              </h1>
+
+              <div className="loading">
+                  Loading race information...
+              </div>
+
+          </div>
+      );
   }
 
   return (

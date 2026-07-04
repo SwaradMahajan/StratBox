@@ -32,14 +32,21 @@ function Championship() {
             setLoading(false);
         }
     };
-
     if (loading) {
-        return (
-            <div className="championship-page">
-                <h2>Loading Championship...</h2>
+    return (
+        <div className="previous-results-page">
+
+            <h1 className="racehub-heading">
+                CHAMPIONSHIP STANDINGS
+            </h1>
+
+            <div className="loading">
+                Loading championship standings...
             </div>
-        );
-    }
+
+        </div>
+    );
+}
 
     return (
         <div className="championship-page">

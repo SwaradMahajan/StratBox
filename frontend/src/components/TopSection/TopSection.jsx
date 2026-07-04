@@ -59,9 +59,7 @@ const circuitImages = {
 
 function TopSection({ raceData }) {
 
-    if (!raceData) {
-        return <h2>Loading...</h2>;
-    }
+
 
     const getCountdown = (date) => {
         const today = new Date();
