@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
-import Navbar from "./components/NavBar/NavBar";
+import Navbar from "./components/Navbar/Navbar";
 
 import LiveRace from "./pages/LiveRace/LiveRace";
 import PreviousResults from "./pages/PreviousResults/PreviousResults";
