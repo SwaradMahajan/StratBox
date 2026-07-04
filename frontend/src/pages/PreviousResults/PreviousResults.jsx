@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./PreviousResults.css";
 import RaceCard from "./RaceCard";
+import { API_URL } from "../../config";
 
 function PreviousResults() {
     const [races, setRaces] = useState([]);
@@ -18,7 +19,7 @@ function PreviousResults() {
             setLoading(true);
 
             const response = await fetch(
-                "http://localhost:5000/api/results"
+                `${API_URL}/api/results`
             );
 
             if (!response.ok) {
@@ -41,7 +42,7 @@ function PreviousResults() {
             setModalLoading(true);
 
             const response = await fetch(
-                `http://localhost:5000/api/results/${round}`
+                `${API_URL}/api/results/${round}`
             );
 
             if (!response.ok) {

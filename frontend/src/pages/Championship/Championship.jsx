@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Championship.css";
+import { API_URL } from "../../config";
 
 function Championship() {
     const [drivers, setDrivers] = useState([]);
@@ -15,7 +16,7 @@ function Championship() {
             setLoading(true);
 
             const response = await fetch(
-                "http://localhost:5000/api/standings"
+                `${API_URL}/api/standings`
             );
 
             if (!response.ok) {

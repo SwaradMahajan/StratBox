@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import TopSection from "../../components/TopSection/TopSection";
 import StrategyLab from "../../components/StrategyLab/StrategyLab";
 import "./Dashboard.css";
+import { API_URL } from "../../config";
 import "../../pages/PreviousResults/PreviousResults.css";
 
 import "./Dashboard.css";
@@ -15,7 +16,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchRaceData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/race");
+        const response = await fetch(`${API_URL}/api/race`);
         const data = await response.json();
 
         setRaceData(data);
