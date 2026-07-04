@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import "./DriverSelector.css";
 import FLAG_IMAGES from "../../assets/flagImages";
 import DRIVER_IMAGES from "../../assets/driverImages";
+import { API_URL } from "../../config";
 
 function DriverSelector({
   selectedTeam,
@@ -15,7 +16,7 @@ function DriverSelector({
     const fetchDrivers = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/drivers"
+          `${API_URL}/api/drivers`
         );
 
         if (!response.ok) {
