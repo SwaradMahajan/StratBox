@@ -47,7 +47,7 @@ export const getPreviousResults = async () => {
         for (let offset = LIMIT; offset < total; offset += LIMIT) {
             const response = await fetch(
                 `${BASE_URL}/results.json?limit=${LIMIT}&offset=${offset}`,
-                { cache: "no-store" }
+                { cache: "no-store", headers: { "User-Agent": "StratBox/1.0.0" } }
             );
 
             if (!response.ok) {
@@ -85,7 +85,7 @@ export const getRaceResult = async (round) => {
     try {
         const response = await fetch(
             `${BASE_URL}/${round}/results.json?limit=${LIMIT}`,
-            { cache: "no-store" }
+            { cache: "no-store", headers: { "User-Agent": "StratBox/1.0.0" } }
         );
 
         if (!response.ok) {
