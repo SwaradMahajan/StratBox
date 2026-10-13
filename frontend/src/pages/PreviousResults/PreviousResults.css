@@ -7,6 +7,29 @@
 .previous-results-page>.racehub-heading {
     margin-bottom: 40px;
 }
+
+.results-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.results-title-row .racehub-heading {
+    margin-bottom: 0;
+}
+
+.results-title-row .results-btn {
+    width: auto;
+    margin-top: 0;
+    flex-shrink: 0;
+    padding: 12px 18px;
+}
+
+.previous-results-page .error p {
+    margin-bottom: 16px;
+}
 .race-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -144,6 +167,16 @@
 
     .previous-results-page h1 {
         font-size: 2rem;
+    }
+
+    .results-title-row {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
+
+    .results-title-row .results-btn {
+        width: 100%;
     }
 
     .modal-content {
