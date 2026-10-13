@@ -6,7 +6,7 @@ export const getPreviousResults = async () => {
         // Jolpica caps the result limit at 100, so page through all records.
         const firstResponse = await fetch(
             `${BASE_URL}/results.json?limit=${LIMIT}&offset=0`,
-            { cache: "no-store" }
+            { cache: "no-store", headers: { "User-Agent": "StratBox/1.0.0" } }
         );
 
         if (!firstResponse.ok) {
